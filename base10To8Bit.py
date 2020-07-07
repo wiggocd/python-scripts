@@ -1,6 +1,6 @@
 import math
 
-def inputHandler():
+def getInput():
     string = input("\nPlease enter an integer between 0 and 255.\n\t> ")
     ret = int(string)
 
@@ -12,7 +12,7 @@ def inputHandler():
 
 def convert(value):
     number = int(value)
-    binaryArray = []
+    binaryList = []
     bitLayout = []
 
     for i in range(8):
@@ -23,20 +23,20 @@ def convert(value):
         tmp = math.floor(number / bitLayout[i])
         print("\tBit", i, ": Division floor before subtraction:", tmp)
 
-        for x in range(len(binaryArray)):
-            if binaryArray[x] != 0:
-                tmp -= ( bitLayout[x] * binaryArray[x] ) / bitLayout[i]
+        for x in range(len(binaryList)):
+            if binaryList[x] != 0:
+                tmp -= ( bitLayout[x] * binaryList[x] ) / bitLayout[i]
             print("\tFloor subtraction", x, ":", tmp)
         
-        binaryArray.append(int(tmp))
+        binaryList.append(int(tmp))
 
-    print("Array:", binaryArray)
-    stringList = [ str(binaryArray[i]) for i in range(len(binaryArray)) ]
+    print("Array:", binaryList)
+    stringList = [ str(binaryList[i]) for i in range(len(binaryList)) ]
 
     return int("".join(stringList))
 
 
-number = inputHandler()
+number = getInput()
 binary = convert(number)
 print("___________________\n")
 print("Converted to 8-bit binary:", binary)
